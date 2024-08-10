@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
         $photo = $_FILES['photo']['name'];
         $photo_tmp = $_FILES['photo']['tmp_name'];
-        $photo_destination = '../assets/images/uploads/' . $photo;
+        $photo_destination = '../assets/images/uploads/room/' . $photo;
 
         // Move the uploaded file to the destination
         if (move_uploaded_file($photo_tmp, $photo_destination)) {

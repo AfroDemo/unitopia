@@ -60,13 +60,13 @@ if (isset($_GET['delid'])) {
                         <td><?php echo $cnt; ?></td>
                         <td>
                             <?php if ($row['photo']): ?>
-                                <img src="../assets/images/uploads/<?php echo htmlspecialchars($row['photo']); ?>" alt="Room Photo" width="100">
+                                <img src="../assets/images/uploads/room/<?php echo htmlspecialchars($row['photo']); ?>" alt="Room Photo" width="100">
                             <?php else: ?>
                                 No Image
                             <?php endif; ?>
                         </td>
                         <td><?php echo htmlspecialchars($row['title']); ?></td>
-                        <td><?php echo htmlspecialchars($row['price']); ?></td>
+                        <td><?php echo htmlspecialchars(number_format($row['price'])); ?></td>
                         <td><?php echo htmlspecialchars($row['quantity']); ?></td>
                         <td><?php echo htmlspecialchars($row['location']); ?></td>
                         <td><?php echo htmlspecialchars($row['distance']); ?></td>

@@ -54,7 +54,7 @@ if (isset($_GET['delid'])) {
             ?>
                     <tr>
                         <td><?php echo $cnt; ?></td>
-                        <td><img src="../assets/images/uploads/<?php echo htmlspecialchars($row['photo']); ?>" alt=""></td>
+                        <td><img src="../assets/images/uploads/uni/<?php echo htmlspecialchars($row['photo']); ?>" alt=""></td>
                         <td><?php echo htmlspecialchars($row['name']); ?></td>
                         <td><?php echo htmlspecialchars($row['location']); ?></td>
                         <td><?php echo htmlspecialchars($row['created_at']); ?></td>

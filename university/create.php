@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
         $photo_name = $_FILES['photo']['name'];
         $photo_size = $_FILES['photo']['size'];
         $photo_type = $_FILES['photo']['type'];
-        $photo_destination = '../assets/images/uploads/' . $photo_name;
+        $photo_destination = '../assets/images/uploads/uni/' . $photo_name;
 
         // Allowed image file types
         $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
