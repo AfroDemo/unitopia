@@ -1,0 +1,27 @@
+#creating the tables for universities and rooms
+
+use unitopia;
+
+create table universities(
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(255) NOT NULL,
+location VARCHAR(255) NOT NULL,
+photo VARCHAR(255),
+created DATETIME,
+modified DATETIME
+);
+
+create table rooms(
+id INT AUTO_INCREMENT PRIMARY KEY,
+uni_id INT NOT NULL,
+title VARCHAR(255) NOT NULL,
+price FLOAT NOT NULL,
+quantity INT NOT NULL,
+location VARCHAR(255) NOT NULL,
+distance VARCHAR(255),
+photo VARCHAR(255) NOT NULL,
+created DATETIME,
+modified DATETIME,
+status BOOLEAN DEFAULT FALSE,
+FOREIGN KEY user_key (uni_id) REFERENCES universities(id)
+);
