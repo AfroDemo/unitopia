@@ -10,27 +10,36 @@ if (isset($_POST['submit'])) {
     $location = mysqli_real_escape_string($con, $_POST['location']);
 
     // Handling file upload
+    $photo = '';
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
-        $photo = $_FILES['photo']['name'];
         $photo_tmp = $_FILES['photo']['tmp_name'];
-        $photo_destination = '../assets/images/uploads/' . $photo;
+        $photo_name = $_FILES['photo']['name'];
+        $photo_size = $_FILES['photo']['size'];
+        $photo_type = $_FILES['photo']['type'];
+        $photo_destination = '../assets/images/uploads/' . $photo_name;
 
-        // Move the uploaded file to the destination
-        if (move_uploaded_file($photo_tmp, $photo_destination)) {
-            // File uploaded successfully
+        // Allowed image file types
+        $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+        
+        // Validate the file type
+        if (in_array($photo_type, $allowed_types)) {
+            // Check if the file size is reasonable (e.g., less than 5MB)
+            if ($photo_size <= 5000000) {
+                if (move_uploaded_file($photo_tmp, $photo_destination)) {
+                    $photo = $photo_name; // File uploaded successfully
+                } else {
+                    // Error moving the file
+                    echo "<script>alert('Error uploading the file');</script>";
+                    return; // Abort the script
+                }
+            } else {
+                echo "<script>alert('File size exceeds the limit of 5MB');</script>";
+                return; // Abort the script
+            }
         } else {
-            // Error moving the file
-            echo "<script>alert('Error uploading the file');</script>";
+            echo "<script>alert('Invalid file type. Only JPG, PNG, and GIF files are allowed.');</script>";
             return; // Abort the script
         }
-    } else {
-        if ($_FILES['photo']['error'] != UPLOAD_ERR_NO_FILE) {
-            // File upload error occurred (not a "no file" error)
-            echo "<script>alert('Error uploading the file');</script>";
-            return; // Abort the script
-        }
-        // No file uploaded
-        $photo = ''; // Set a default value or handle as per your requirement
     }
 
     $stmt = $con->prepare("INSERT INTO universities (name, location, photo) VALUES (?, ?, ?)");
@@ -67,7 +76,7 @@ if (isset($_POST['submit'])) {
             <input type="text" id="location" name="location" required>
 
             <label for="photo">Photo (optional):</label>
-            <input type="file" id="photo" name="photo">
+            <input type="file" id="photo" name="photo" accept="image/jpeg, image/png, image/gif">
 
             <input type="submit" name="submit" value="Create">
         </form>
