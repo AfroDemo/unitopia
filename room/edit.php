@@ -1,5 +1,5 @@
 <?php
-include('../connect.php');
+include('../controller/connect.php');
 
 // Enable error reporting
 error_reporting(E_ALL);

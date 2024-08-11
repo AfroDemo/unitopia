@@ -1,6 +1,12 @@
 <?php
-include('../connect.php');
 session_start();
+if (isset($_SESSION['user_id'])) {
+    header('Location: dashboard.php');
+    exit();
+}
+
+// The rest of your login script...
+include('../controller/connect.php');
 
 // Enable error reporting
 error_reporting(E_ALL);

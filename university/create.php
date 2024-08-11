@@ -1,5 +1,5 @@
 <?php
-include('../connect.php');
+include('../controller/connect.php');
 
 // Enable error reporting
 error_reporting(E_ALL);
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 
         // Allowed image file types
         $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
-        
+
         // Validate the file type
         if (in_array($photo_type, $allowed_types)) {
             // Check if the file size is reasonable (e.g., less than 5MB)
