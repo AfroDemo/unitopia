@@ -21,4 +21,15 @@ session_start();
             </ul>
         </nav>
     </div>
+    <div class="header">
+        <h1>Welcome to Unitopia</h1>
+        <p>Welcome to Unitopia, the ultimate platform designed to simplify your transition to university.
+            Whether you need to book a knowledgeable tour guide to show you around campus or find the perfect room to rent,
+         </p>
+        <div class="button-container">
+            <a href="#get-started">Get Started</a>
+        </div>
+    
+        
+    </div>
 </header>
